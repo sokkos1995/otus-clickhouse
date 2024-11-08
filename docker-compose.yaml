@@ -9,3 +9,4 @@ services:
       - 9000:9000
     volumes:
       - ./homeworks/scripts:/tmp/scripts
+      - ./data/:/tmp/data/
