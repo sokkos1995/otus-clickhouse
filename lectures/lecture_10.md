@@ -247,3 +247,7 @@ WHERE lhs.id = 5;
 - лучший джоин в кликхаус - тот джоин, которого не было
 - использовать можно, просто не нужно использовать терабайтные таблицы
 - делаем подзапросы из агрегатов!
+
+## Полезная ссылка по джоинам
+
+- https://clickhouse.com/blog/clickhouse-fully-supports-joins-how-to-choose-the-right-algorithm-part5#join-type-support 
