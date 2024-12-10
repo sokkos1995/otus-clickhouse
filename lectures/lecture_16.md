@@ -251,7 +251,7 @@ Ok.
 4c149cc68762 :) select count() from system.tmp_asynchronous_metric_log;
 */
 SELECT count()
-FROM system.tmp_asynchronous_metric_log
+FROM system.tmp_asynchronous_metric_log;
 /*
 Query id: 7c58c0aa-751d-458d-a88f-aebb2f16fa0f
 
@@ -264,5 +264,74 @@ Query id: 7c58c0aa-751d-458d-a88f-aebb2f16fa0f
 -- то есть мы успешно на хардлинках моментально скопировали 30млн строк
 
 -- теперь попробуем исправить данные
+-- посмотрим пример какой нибудь одной строки
+select * from tmp_asynchronous_metric_log limit 1 format vertical;
+/*
+Row 1:
+──────
+hostname:   dfe36766c41d
+event_date: 2024-12-05
+event_time: 2024-12-05 10:34:03
+metric:     AsynchronousHeavyMetricsCalculationTimeSpent
+value:      0
 
+1 row in set. Elapsed: 0.019 sec. 
+*/
+-- допустим, мы хотим подправить какую нибудь метрику где у нас некорректное значение
+alter table tmp_asynchronous_metric_log update value=1 where metric='AsynchronousHeavyMetricsCalculationTimeSpent';
+-- и у нас появилась в system.mutations наша запись
+select * from system.mutations format Vertical;
+/*
+Row 1:
+──────
+database:                   default
+table:                      target_tbl_sum
+mutation_id:                mutation_3.txt
+command:                    DELETE WHERE id = 1
+create_time:                2024-12-05 12:03:29
+block_numbers.partition_id: ['']
+block_numbers.number:       [3]
+parts_to_do_names:          []
+parts_to_do:                0
+is_done:                    1
+is_killed:                  0
+latest_failed_part:         
+latest_fail_time:           1970-01-01 00:00:00
+latest_fail_reason:         
+
+Row 2:
+──────
+database:                   system
+table:                      tmp_asynchronous_metric_log
+mutation_id:                mutation_9.txt
+command:                    UPDATE value = 1 WHERE metric = 'AsynchronousHeavyMetricsCalculationTimeSpent'
+create_time:                2024-12-06 12:26:17
+block_numbers.partition_id: ['']
+block_numbers.number:       [9]
+parts_to_do_names:          []
+parts_to_do:                0
+is_done:                    1
+is_killed:                  0
+latest_failed_part:         
+latest_fail_time:           1970-01-01 00:00:00
+latest_fail_reason:         
+
+2 rows in set. Elapsed: 0.004 sec. 
+*/
+-- Здесь мы видим что у нас мутация выполнилась (is_done=1)
+-- mutation_id: mutation_9.txt - кликхаус сохраняет мутацию как тестовый файл! чтобы при рестартах эти мутации дальше продолжить
+
+-- теперь, когда мы сделали мутацию, мы можем сделать наш реплейс в обратную сторону
+alter table system.asynchronous_metric_log replace partition '202411' from system.tmp_asynchronous_metric_log;
+
+-- таким образом мы загнали обратно наши исправленные данные. Это достаточно частый кейс по исправлению данных в кликхаусе; можно сделать апдейт/делет на боевой таблице, но если мы вдруг ошиблись - данные будет спасти проблематично (восстановление займет какое то время). Если мы хотим дополнительно обезопасится - то мы можем делать альтеры в соседней таблице и потом реплейснуть обратно. Если мутация зависнет (даже не делается килл) - снять ее можно будет через дроп партишн/дроп тейбл, на тестовой таблице это не страшно. Гораздо проще делать мутацию сбоку.
+kill mutation where mutation_id = 'mutation_9.txt';
+
+-- с булевыми колонками можно очень легко фильтровать
+select * from system.mutations where not is done;
+
+-- в кликхаусе много неявных, но удобных запросов с привычным sql
+show tables where name like 'trace_log';
+
+kill query where True;
 ```
