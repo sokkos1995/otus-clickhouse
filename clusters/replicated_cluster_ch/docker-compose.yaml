@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  zookeeper:
+    image: 'bitnami/zookeeper:3.7.2'
+    networks:
+      - ch_replicated
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+      - ZOOKEEPER_CLIENT_PORT=2181
+    ports:
+      - "2182:2181"
+      - "2888:2888"
+      - "3888:3888"
+    
+  clickhouse1:
+    image: clickhouse/clickhouse-server:24.8.4.13
+    container_name: ch1
+    hostname: clickhouse1     
+    ports:
+      - "8002:9000"
+      - "9123:8123"
+    volumes:
+      - ./config.d_01:/etc/clickhouse-server/config.d
+    networks:
+      - ch_replicated
+    depends_on:
+      - zookeeper
+      
+  clickhouse2:
+    image: clickhouse/clickhouse-server:24.8.4.13
+    container_name: ch2
+    hostname: clickhouse2   
+    ports:
+      - "8003:9000"
+      - "9124:8123"
+    volumes:
+      - ./config.d_02:/etc/clickhouse-server/config.d
+    networks:
+      - ch_replicated
+    depends_on:
+      - zookeeper
+      
+  clickhouse3:
+    image: clickhouse/clickhouse-server:24.8.4.13
+    container_name: ch3
+    hostname: clickhouse3    
+    ports:
+      - "8004:9000"
+      - "9125:8123"
+    volumes:
+      - ./config.d_03:/etc/clickhouse-server/config.d
+    networks:
+      - ch_replicated
+    depends_on:
+      - zookeeper
+
+networks:
+  ch_replicated:
+    driver: bridge
