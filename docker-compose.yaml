@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   clickhouse:
-    image: clickhouse/clickhouse-server:24.8.4.13-alpine
+    image: clickhouse/clickhouse-server:24.8.4.13
+    container_name: ch
     restart: unless-stopped
     ports:
       - 8123:8123
