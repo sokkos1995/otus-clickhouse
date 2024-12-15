@@ -62,8 +62,8 @@
         </node>  
     </zookeeper>
     <macros>
-        <shard>01</shard>
-        <replica>ch1</replica>
+        <shard>04</shard>
+        <replica>ch4</replica>
         <cluster>cluster_4sh1rep</cluster>
     </macros>        
 </clickhouse>

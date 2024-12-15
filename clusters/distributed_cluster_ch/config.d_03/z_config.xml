@@ -3,9 +3,9 @@
     <http_port>8123</http_port>
     <tcp_port>9000</tcp_port>
     <remote_servers>
-        <replicated_cluster>
+        <!-- 2 shards 2 replicas -->
+        <cluster_2sh2rep>
             <shard>
-                <internal_replication>true</internal_replication>
                 <replica>
                     <host>clickhouse1</host>
                     <port>9000</port>
@@ -14,13 +14,21 @@
                     <host>clickhouse2</host>
                     <port>9000</port>
                 </replica>
+            </shard>
+            <shard>
                 <replica>
                     <host>clickhouse3</host>
                     <port>9000</port>
                 </replica>
+                <replica>
+                    <host>clickhouse4</host>
+                    <port>9000</port>
+                </replica>                
             </shard>
-        </replicated_cluster>    
-        <sharded_cluster>
+        </cluster_2sh2rep>
+        
+        <!-- 4 shards 1 replicas -->
+        <cluster_4sh1rep>
             <shard>
                 <replica>
                     <host>clickhouse1</host>
@@ -39,7 +47,13 @@
                     <port>9000</port>
                 </replica>
             </shard>
-        </sharded_cluster>
+            <shard>
+                <replica>
+                    <host>clickhouse4</host>
+                    <port>9000</port>
+                </replica>
+            </shard>            
+        </cluster_4sh1rep>
     </remote_servers>
     <zookeeper>
         <node index="1">
@@ -48,8 +62,8 @@
         </node>  
     </zookeeper>
     <macros>
-        <shard>01</shard>
+        <shard>03</shard>
         <replica>ch3</replica>
-        <cluster>replicated_cluster</cluster>
+        <cluster>cluster_4sh1rep</cluster>
     </macros>        
 </clickhouse>
