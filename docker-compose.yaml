@@ -2,12 +2,11 @@ version: '3.8'
 
 services:
   clickhouse:
-    image: clickhouse/clickhouse-server:24.8.4.13
-    container_name: ch
-    restart: unless-stopped
+    image: clickhouse/clickhouse-server:24.10
     ports:
       - 8123:8123
       - 9000:9000
+      - 9363:9363   
     volumes:
       - ./homeworks/scripts:/tmp/scripts
       - ./data/:/tmp/data/
