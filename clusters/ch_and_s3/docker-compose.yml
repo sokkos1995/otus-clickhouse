@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.8.4.13
+    container_name: clickhouse
+    hostname: clickhouse
+    volumes:
+      - ./fs/volumes/clickhouse/etc/clickhouse-server/config.d:/etc/clickhouse-server/config.d
+      - ./fs/volumes/clickhouse/etc/clickhouse-server/users.d/users.xml:/etc/clickhouse-server/users.d/users.xml
+      - ./fs/volumes/clickhouse/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 127.0.0.1:8123:8123
+      - 127.0.0.1:9000:9000  
+    depends_on:
+      - minio
+
+  minio:
+    image: bitnami/minio
+    container_name: minio
+    hostname: minio
+    ports:
+      - 127.0.0.1:10000:9000
+      - 127.0.0.1:10001:9001  
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadminpassword
+      - MINIO_DEFAULT_BUCKETS=clickhouse:public
+    volumes:
+      - ./fs/volumes/minio:/bitnami/minio/data
