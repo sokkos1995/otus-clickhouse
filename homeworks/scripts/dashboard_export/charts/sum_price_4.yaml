@@ -1,0 +1,36 @@
+slice_name: sum_price
+description: null
+certified_by: null
+certification_details: null
+viz_type: big_number_total
+params:
+  datasource: 1__table
+  viz_type: big_number_total
+  metric:
+    expressionType: SQL
+    sqlExpression: sum(price)
+    column: null
+    aggregate: null
+    datasourceWarning: false
+    hasCustomLabel: false
+    label: sum(price)
+    optionName: metric_xc20janfuhq_f9td2vs5efj
+  adhoc_filters:
+  - clause: WHERE
+    subject: created_at
+    operator: TEMPORAL_RANGE
+    comparator: No filter
+    expressionType: SIMPLE
+  header_font_size: 0.4
+  subheader_font_size: 0.15
+  y_axis_format: SMART_NUMBER
+  time_format: smart_date
+  extra_form_data: {}
+  dashboards: []
+query_context: '{"datasource":{"id":1,"type":"table"},"force":false,"queries":[{"filters":[{"col":"created_at","op":"TEMPORAL_RANGE","val":"No
+  filter"}],"extras":{"having":"","where":""},"applied_time_extras":{},"columns":[],"metrics":[{"expressionType":"SQL","sqlExpression":"sum(price)","column":null,"aggregate":null,"datasourceWarning":false,"hasCustomLabel":false,"label":"sum(price)","optionName":"metric_xc20janfuhq_f9td2vs5efj"}],"annotation_layers":[],"series_limit":0,"order_desc":true,"url_params":{},"custom_params":{},"custom_form_data":{}}],"form_data":{"datasource":"1__table","viz_type":"big_number_total","metric":{"expressionType":"SQL","sqlExpression":"sum(price)","column":null,"aggregate":null,"datasourceWarning":false,"hasCustomLabel":false,"label":"sum(price)","optionName":"metric_xc20janfuhq_f9td2vs5efj"},"adhoc_filters":[{"clause":"WHERE","subject":"created_at","operator":"TEMPORAL_RANGE","comparator":"No
+  filter","expressionType":"SIMPLE"}],"header_font_size":0.4,"subheader_font_size":0.15,"y_axis_format":"SMART_NUMBER","time_format":"smart_date","extra_form_data":{},"dashboards":[],"force":false,"result_format":"json","result_type":"full"},"result_format":"json","result_type":"full"}'
+cache_timeout: null
+uuid: 0f01f121-977a-44fb-8a5a-711b79ddc69b
+version: 1.0.0
+dataset_uuid: 3a1e78ca-c889-4c7a-8541-152e3d734be2

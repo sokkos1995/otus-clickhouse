@@ -1,0 +1,278 @@
+dashboard_title: '[ untitled dashboard ]'
+description: null
+css: ''
+slug: null
+certified_by: ''
+certification_details: ''
+published: false
+uuid: 7556cfd5-f13f-4646-864d-d3fb849af7e5
+position:
+  CHART-7FKAfi5-aFP:
+    children: []
+    id: CHART-7FKAfi5-aFP
+    meta:
+      chartId: 1
+      height: 50
+      sliceName: currency_pie_chart
+      uuid: d5b68ce2-406d-42f1-a703-b40d095733c9
+      width: 4
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    - TAB-nZrBMUmOpJI
+    - ROW-h5b8xqGPai
+    type: CHART
+  CHART-HWi6dgI7r2i:
+    children: []
+    id: CHART-HWi6dgI7r2i
+    meta:
+      chartId: 4
+      height: 27
+      sliceName: sum_price
+      uuid: 0f01f121-977a-44fb-8a5a-711b79ddc69b
+      width: 5
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    - TAB-nZrBMUmOpJI
+    - ROW-vSXXQzqNPi
+    type: CHART
+  CHART-KpDxkC92LoR:
+    children: []
+    id: CHART-KpDxkC92LoR
+    meta:
+      chartId: 3
+      height: 50
+      sliceName: dish_filter_ingridient
+      uuid: b6bbd77f-6966-4b27-baef-2372a681247a
+      width: 12
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    - TAB-nZrBMUmOpJI
+    - ROW-_oOCY3GXWAv
+    type: CHART
+  CHART-Wn67UEyOKn_:
+    children: []
+    id: CHART-Wn67UEyOKn_
+    meta:
+      chartId: 2
+      height: 27
+      sliceName: menu_dish_count_to_price
+      uuid: be0bcc17-fe17-4f83-9d6f-9be86bb0ed60
+      width: 7
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    - TAB-nZrBMUmOpJI
+    - ROW-vSXXQzqNPi
+    type: CHART
+  CHART-explore-5-1:
+    children: []
+    id: CHART-explore-5-1
+    meta:
+      chartId: 5
+      height: 50
+      sliceName: created_at
+      uuid: 7126979e-9db8-45ce-888a-006c745f4fd2
+      width: 8
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    - TAB-nZrBMUmOpJI
+    - ROW-h5b8xqGPai
+    type: CHART
+  DASHBOARD_VERSION_KEY: v2
+  GRID_ID:
+    children: []
+    id: GRID_ID
+    parents:
+    - ROOT_ID
+    type: GRID
+  HEADER_ID:
+    id: HEADER_ID
+    meta:
+      text: '[ untitled dashboard ]'
+    type: HEADER
+  ROOT_ID:
+    children:
+    - TABS-IknD-rB1i_D
+    id: ROOT_ID
+    type: ROOT
+  ROW-_oOCY3GXWAv:
+    children:
+    - CHART-KpDxkC92LoR
+    id: ROW-_oOCY3GXWAv
+    meta:
+      '0': ROOT_ID
+      '1': TABS-IknD-rB1i_D
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    - TAB-nZrBMUmOpJI
+    type: ROW
+  ROW-h5b8xqGPai:
+    children:
+    - CHART-7FKAfi5-aFP
+    - CHART-explore-5-1
+    id: ROW-h5b8xqGPai
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    - TAB-nZrBMUmOpJI
+    type: ROW
+  ROW-vSXXQzqNPi:
+    children:
+    - CHART-HWi6dgI7r2i
+    - CHART-Wn67UEyOKn_
+    id: ROW-vSXXQzqNPi
+    meta:
+      background: BACKGROUND_TRANSPARENT
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    - TAB-nZrBMUmOpJI
+    type: ROW
+  TAB-l8r2g-TCw_:
+    children: []
+    id: TAB-l8r2g-TCw_
+    meta:
+      defaultText: Tab title
+      placeholder: Tab title
+      text: extra_info
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    type: TAB
+  TAB-nZrBMUmOpJI:
+    children:
+    - ROW-vSXXQzqNPi
+    - ROW-h5b8xqGPai
+    - ROW-_oOCY3GXWAv
+    id: TAB-nZrBMUmOpJI
+    meta:
+      defaultText: Tab title
+      placeholder: Tab title
+      text: main_page
+    parents:
+    - ROOT_ID
+    - TABS-IknD-rB1i_D
+    type: TAB
+  TABS-IknD-rB1i_D:
+    children:
+    - TAB-nZrBMUmOpJI
+    - TAB-l8r2g-TCw_
+    id: TABS-IknD-rB1i_D
+    meta: {}
+    parents:
+    - ROOT_ID
+    type: TABS
+metadata:
+  chart_configuration:
+    '1':
+      id: 1
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 2
+        - 3
+        - 4
+        - 5
+    '2':
+      id: 2
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 1
+        - 3
+        - 4
+        - 5
+    '3':
+      id: 3
+      crossFilters:
+        scope: global
+        chartsInScope:
+        - 1
+        - 2
+        - 4
+        - 5
+  global_chart_configuration:
+    scope:
+      rootPath:
+      - ROOT_ID
+      excluded: []
+    chartsInScope:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+  color_scheme: ''
+  refresh_frequency: 0
+  shared_label_colors:
+    '14': '#1FA8C9'
+    '15': '#5AC189'
+    '16': '#666666'
+    '17': '#FCC700'
+    '18': '#3CCCCB'
+    '19': '#8FD3E4'
+    '20': '#ACE1C4'
+    '21': '#B2B2B2'
+    '22': '#FDE380'
+    '23': '#9EE5E5'
+    '24': '#454E7C'
+    '25': '#A868B7'
+    '26': '#FEC0A1'
+    '27': '#D1C6BC'
+    '28': '#A38F79'
+    '29': '#FF7F44'
+    '30': '#E04355'
+    '31': '#D3B3DA'
+    '32': '#A1A6BD'
+    '34': '#EFA1AA'
+    '35': '#1FA8C9'
+    '36': '#454E7C'
+    '38': '#5AC189'
+    '39': '#FF7F44'
+    '40': '#666666'
+    '43': '#E04355'
+    '44': '#FCC700'
+    '45': '#A868B7'
+    '46': '#3CCCCB'
+    '47': '#A38F79'
+    '48': '#8FD3E4'
+    '49': '#A1A6BD'
+    '50': '#ACE1C4'
+    '54': '#FEC0A1'
+    '62': '#B2B2B2'
+    '69': '#EFA1AA'
+    '72': '#FDE380'
+    '97': '#D3B3DA'
+    '100': '#9EE5E5'
+    '133': '#D1C6BC'
+    '138': '#1FA8C9'
+    '143': '#454E7C'
+    '144': '#5AC189'
+    '157': '#FF7F44'
+    '173': '#666666'
+    '174': '#E04355'
+    '177': '#FCC700'
+    '187': '#A868B7'
+    '188': '#3CCCCB'
+    '265': '#A38F79'
+    Dollars: '#1FA8C9'
+    ? ''
+    : '#454E7C'
+    Deutsche Marks: '#5AC189'
+    Francs: '#FF7F44'
+    Canadian Dollars: '#666666'
+  color_scheme_domain: []
+  expanded_slices: {}
+  label_colors: {}
+  timed_refresh_immune_slices: []
+  cross_filters_enabled: true
+  default_filters: '{}'
+version: 1.0.0

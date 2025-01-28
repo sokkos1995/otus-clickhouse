@@ -1,0 +1,51 @@
+slice_name: dish_filter_ingridient
+description: null
+certified_by: null
+certification_details: null
+viz_type: table
+params:
+  datasource: 1__table
+  viz_type: table
+  query_mode: raw
+  groupby: []
+  time_grain_sqla: P1D
+  temporal_columns_lookup:
+    created_at: true
+    updated_at: true
+  all_columns:
+  - dish_name
+  - dish_description
+  - price
+  - menu_name
+  - menu_place
+  - menu_location
+  percent_metrics: []
+  adhoc_filters:
+  - expressionType: SIMPLE
+    subject: dish_name
+    operator: ILIKE
+    operatorId: ILIKE
+    comparator: '%rabbit%'
+    clause: WHERE
+    sqlExpression: null
+    isExtra: false
+    isNew: false
+    datasourceWarning: false
+    filterOptionName: filter_i0mp31s46m_ygwr15vq82
+  order_by_cols: []
+  row_limit: 1000
+  server_page_length: 10
+  order_desc: true
+  table_timestamp_format: smart_date
+  page_length: 50
+  include_search: true
+  show_cell_bars: true
+  color_pn: true
+  conditional_formatting: []
+  extra_form_data: {}
+  dashboards: []
+query_context: '{"datasource":{"id":1,"type":"table"},"force":false,"queries":[{"filters":[{"col":"dish_name","op":"ILIKE","val":"%rabbit%"}],"extras":{"time_grain_sqla":"P1D","having":"","where":""},"applied_time_extras":{},"columns":["dish_name","dish_description","price","menu_name","menu_place","menu_location"],"orderby":[],"annotation_layers":[],"row_limit":1000,"series_limit":0,"order_desc":true,"url_params":{},"custom_params":{},"custom_form_data":{},"post_processing":[]}],"form_data":{"datasource":"1__table","viz_type":"table","query_mode":"raw","groupby":[],"time_grain_sqla":"P1D","temporal_columns_lookup":{"created_at":true,"updated_at":true},"all_columns":["dish_name","dish_description","price","menu_name","menu_place","menu_location"],"percent_metrics":[],"adhoc_filters":[{"expressionType":"SIMPLE","subject":"dish_name","operator":"ILIKE","operatorId":"ILIKE","comparator":"%rabbit%","clause":"WHERE","sqlExpression":null,"isExtra":false,"isNew":false,"datasourceWarning":false,"filterOptionName":"filter_i0mp31s46m_ygwr15vq82"}],"order_by_cols":[],"row_limit":1000,"server_page_length":10,"order_desc":true,"table_timestamp_format":"smart_date","page_length":50,"include_search":true,"show_cell_bars":true,"color_pn":true,"conditional_formatting":[],"extra_form_data":{},"dashboards":[],"force":false,"result_format":"json","result_type":"full","include_time":false},"result_format":"json","result_type":"full"}'
+cache_timeout: null
+uuid: b6bbd77f-6966-4b27-baef-2372a681247a
+version: 1.0.0
+dataset_uuid: 3a1e78ca-c889-4c7a-8541-152e3d734be2

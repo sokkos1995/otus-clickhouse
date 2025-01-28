@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  superset:
+    image: apache/superset:3.1.1
+    container_name: superset
+    environment:
+      - SUPERSET_SECRET_KEY=MyVerySecretKey
+    ports:
+      - '8080:8088'
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.10
+    ports:
+      - 8123:8123
+      - 9000:9000      
+    volumes:
+      - ./ch:/docker-entrypoint-initdb.d      
